@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — EnerFlow</title>
+  <meta name="description" content="Contact EnerFlow support for help with the app." />
+  <link rel="icon" href="assets/logo-enerflow.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo-enerflow.png" width="32" height="32" alt="" />
+        EnerFlow
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="privacy.html" data-i18n="nav_privacy">Privacy</a></li>
+        <li><a href="support.html" aria-current="page" data-i18n="nav_support">Support</a></li>
+        <li class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="it" aria-pressed="false">IT</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="wrap">
+        <h1 data-i18n="support_title">Support</h1>
+        <p data-i18n="support_lead">
+          Need help with EnerFlow? Send us a message. We usually reply to the email you provide.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap prose">
+      <div class="panel">
+        <form class="form" id="support-form" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY" />
+          <input type="hidden" name="subject" value="EnerFlow — support request" />
+          <input type="hidden" name="from_name" value="EnerFlow Support" />
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" />
+
+          <label>
+            <span data-i18n="support_name">Name</span>
+            <input type="text" name="name" required maxlength="120" data-i18n="support_ph_name" placeholder="Your name" />
+          </label>
+
+          <label>
+            <span data-i18n="support_email">Email</span>
+            <input type="email" name="email" required maxlength="200" data-i18n="support_ph_email" placeholder="you@email.com" />
+          </label>
+
+          <label>
+            <span data-i18n="support_topic">Topic</span>
+            <select name="topic" required>
+              <option value="" data-i18n="support_topic_placeholder">Select…</option>
+              <option value="MyEnergi API access">MyEnergi API access</option>
+              <option value="Growatt">Growatt</option>
+              <option value="iCloud backup">iCloud backup</option>
+              <option value="Bug / crash">Bug / crash</option>
+              <option value="Privacy">Privacy</option>
+              <option value="Other">Other</option>
+            </select>
+          </label>
+
+          <label>
+            <span data-i18n="support_message">Message</span>
+            <textarea name="message" required maxlength="5000" data-i18n="support_ph_msg" placeholder="Describe the issue or request…"></textarea>
+          </label>
+
+          <p class="form-note">
+            <span data-i18n="support_note">We use form data only to reply. Details:</span>
+            <a href="privacy.html" data-i18n="footer_privacy">Privacy policy</a>.
+          </p>
+
+          <button class="btn btn-primary" type="submit" data-i18n="support_send">Send request</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <h2 data-i18n="support_before">Before you write</h2>
+      <ul>
+        <li data-i18n="support_tip1">Check that your MyEnergi serial and API token are correct.</li>
+        <li data-i18n="support_tip2">If you use Growatt, confirm the account is set up in Settings.</li>
+        <li data-i18n="support_tip3">For iCloud backup, make sure iCloud Drive is enabled on the device.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>© <span id="year"></span> EnerFlow · econe.it</div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html" data-i18n="footer_privacy">Privacy policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+  <script>
+    const form = document.getElementById("support-form");
+    const statusEl = document.getElementById("form-status");
+
+    function currentLang() {
+      return localStorage.getItem("enerflow-lang") === "it" ? "it" : "en";
+    }
+
+    function msg(key) {
+      // reuse strings already applied via data-i18n by reading from DOM language buttons context
+      const map = {
+        en: {
+          sending: "Sending…",
+          sent: "Message sent. We’ll reply by email.",
+          cfg: "Form not configured yet: add your Web3Forms access key in support.html.",
+          fail: "Could not send the message. Please try again later.",
+        },
+        it: {
+          sending: "Invio in corso…",
+          sent: "Messaggio inviato. Ti risponderemo via email.",
+          cfg: "Form non ancora configurato: inserisci la Web3Forms access key in support.html.",
+          fail: "Non è stato possibile inviare il messaggio. Riprova più tardi.",
+        },
+      };
+      return map[currentLang()][key];
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      statusEl.className = "form-status";
+      statusEl.textContent = msg("sending");
+
+      const accessKey = form.querySelector('input[name="access_key"]').value;
+      if (!accessKey || accessKey.includes("REPLACE_WITH_")) {
+        statusEl.className = "form-status err";
+        statusEl.textContent = msg("cfg");
+        return;
+      }
+
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" },
+        });
+        const data = await response.json();
+        if (response.ok && data.success) {
+          statusEl.className = "form-status ok";
+          statusEl.textContent = msg("sent");
+          form.reset();
+        } else {
+          throw new Error(data.message || "fail");
+        }
+      } catch (err) {
+        statusEl.className = "form-status err";
+        statusEl.textContent = msg("fail");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="EnerFlow">
+  <defs>
+    <linearGradient id="bg" x1="64" y1="48" x2="448" y2="464" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f766e"/>
+      <stop offset="55%" stop-color="#0a4f48"/>
+      <stop offset="100%" stop-color="#083b36"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="300" y1="96" x2="420" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+  <circle cx="350" cy="168" r="78" fill="url(#sun)"/>
+  <path
+    d="M118 360c42-86 98-132 168-138 46-4 78 14 98 42"
+    fill="none"
+    stroke="#e8f6f2"
+    stroke-width="34"
+    stroke-linecap="round"
+  />
+  <path
+    d="M146 418c54-58 112-84 178-78"
+    fill="none"
+    stroke="rgba(232,246,242,0.55)"
+    stroke-width="22"
+    stroke-linecap="round"
+  />
+</svg>

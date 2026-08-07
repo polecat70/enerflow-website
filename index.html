@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EnerFlow — Home energy & wallbox control</title>
+  <meta name="description" content="EnerFlow: monitor your MyEnergi wallbox, Growatt solar, energy costs and iCloud backup. No ads. No personal data collection." />
+  <link rel="icon" href="assets/logo-enerflow.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/logo-enerflow.png" width="32" height="32" alt="" />
+        EnerFlow
+      </a>
+      <ul class="nav-links">
+        <li class="nav-hide-sm"><a href="#features" data-i18n="nav_features">Features</a></li>
+        <li class="nav-hide-sm"><a href="#screenshots" data-i18n="nav_screens">Screenshots</a></li>
+        <li><a href="privacy.html" data-i18n="nav_privacy">Privacy</a></li>
+        <li><a href="support.html" data-i18n="nav_support">Support</a></li>
+        <li class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="lang-btn" data-lang="it" aria-pressed="false">IT</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="eyebrow">by econe.it</p>
+          <h1>EnerFlow</h1>
+          <p class="hero-lead" data-i18n="hero_lead">
+            Control your wallbox, follow solar production and home use, manage energy costs.
+            Your data stays on your device; optional backup goes to your own iCloud.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://apps.apple.com/" data-i18n="cta_store">Get it on the App Store</a>
+            <a class="btn btn-secondary" href="support.html" data-i18n="cta_support">Contact support</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <img class="hero-logo" src="assets/logo-enerflow.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section trust-section" id="privacy-promise">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="trust_title">Built around your privacy</h2>
+        <div class="trust-grid">
+          <article class="trust-item">
+            <strong data-i18n="trust_ads_title">No advertising</strong>
+            <p data-i18n="trust_ads_text">Zero ads, zero sponsored content, zero tracking pixels.</p>
+          </article>
+          <article class="trust-item">
+            <strong data-i18n="trust_data_title">No personal data harvested</strong>
+            <p data-i18n="trust_data_text">
+              We don’t collect personal data for analytics, marketing, or resale. Credentials stay on your phone.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="features_title">Made for home, solar and wallbox</h2>
+        <p class="section-lead" data-i18n="features_lead">
+          EnerFlow connects the accounts you already use (MyEnergi and Growatt). No EnerFlow account. No credentials stored on our servers.
+        </p>
+        <ul class="feature-list">
+          <li>
+            <strong data-i18n="feat_wallbox_title">MyEnergi wallbox</strong>
+            <p data-i18n="feat_wallbox_text">Status, charge modes and history for your Zappi via official MyEnergi APIs.</p>
+          </li>
+          <li>
+            <strong data-i18n="feat_solar_title">Growatt solar</strong>
+            <p data-i18n="feat_solar_text">Live production from your existing Growatt plant using Growatt’s APIs.</p>
+          </li>
+          <li>
+            <strong data-i18n="feat_privacy_title">Privacy by design</strong>
+            <p data-i18n="feat_privacy_text">On-device credentials, no ad tracking, optional backup to your iCloud.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section screenshots-section" id="screenshots">
+      <div class="wrap">
+        <h2 class="section-title" data-i18n="shots_title">A look inside the app</h2>
+        <p class="section-lead" data-i18n="shots_lead">
+          Swipe or use the arrows. Infinite loop — cards on both sides fade into the distance.
+        </p>
+
+        <div class="carousel" aria-roledescription="carousel">
+          <button type="button" class="carousel-nav carousel-nav-prev" id="carousel-prev" aria-label="Previous">‹</button>
+          <div class="carousel-viewport">
+            <div class="carousel-stage" id="carousel-stage"></div>
+          </div>
+          <button type="button" class="carousel-nav carousel-nav-next" id="carousel-next" aria-label="Next">›</button>
+        </div>
+        <div class="carousel-caption" id="carousel-caption" aria-live="polite">
+          <p class="carousel-caption-title" id="carousel-caption-title"></p>
+          <p class="carousel-caption-text" id="carousel-caption-text"></p>
+        </div>
+        <div class="carousel-dots" id="carousel-dots"></div>
+        <p class="shots-hint" id="shots-hint" hidden data-i18n="shots_empty">
+          No screenshots found yet.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>© <span id="year"></span> EnerFlow · econe.it</div>
+      <div class="footer-links">
+        <a href="privacy.html" data-i18n="footer_privacy">Privacy policy</a>
+        <a href="support.html" data-i18n="footer_support">Support</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>
