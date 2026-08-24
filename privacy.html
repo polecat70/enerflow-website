@@ -273,11 +273,27 @@
   </main>
 
   <footer class="site-footer">
-    <div class="wrap footer-grid">
-      <div>© <span id="year"></span> EnerFlow · econe.it</div>
-      <div class="footer-links">
-        <a href="index.html">Home</a>
-        <a href="support.html" data-i18n="footer_support">Support</a>
+    <div class="wrap">
+      <section class="store-download" id="download" aria-labelledby="download-title">
+        <h2 class="section-title" id="download-title" data-i18n="download_title">Get the app</h2>
+        <p class="section-lead" data-i18n="download_lead">Scan the QR code with your phone, or tap a store badge.</p>
+        <div class="store-grid">
+          <a class="store-card" data-store="apple" href="https://apps.apple.com/" target="_blank" rel="noopener noreferrer">
+            <img class="store-qr" src="assets/store/qr-app-store.svg" width="180" height="180" alt="QR code for the App Store" data-i18n-attr="alt:download_qr_apple" />
+            <img class="store-badge store-badge-apple" src="assets/store/badge-app-store.svg" width="120" height="40" alt="Download on the App Store" data-i18n-attr="alt:download_appstore" />
+          </a>
+          <a class="store-card" data-store="play" href="https://play.google.com/store/apps/" target="_blank" rel="noopener noreferrer">
+            <img class="store-qr" src="assets/store/qr-play-store.svg" width="180" height="180" alt="QR code for Google Play" data-i18n-attr="alt:download_qr_play" />
+            <img class="store-badge store-badge-play" src="assets/store/badge-google-play.png" width="155" height="60" alt="Get it on Google Play" data-i18n-attr="alt:download_playstore" />
+          </a>
+        </div>
+      </section>
+      <div class="footer-grid">
+        <div>© <span id="year"></span> EnerFlow · econe.it</div>
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="support.html" data-i18n="footer_support">Support</a>
+        </div>
       </div>
     </div>
   </footer>

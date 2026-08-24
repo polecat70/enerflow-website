@@ -6,6 +6,13 @@
   const STORAGE_KEY = "enerflow-lang";
   const DEFAULT_LANG = "en";
 
+  // Replace with the real listing URLs, then regenerate QR codes:
+  // python3 scripts/fetch_store_assets.py
+  const STORE_LINKS = {
+    apple: "https://apps.apple.com/",
+    play: "https://play.google.com/store/apps/",
+  };
+
   const I18N = {
     en: {
       meta_title: "EnerFlow — Home energy, EV and solar control",
@@ -19,7 +26,14 @@
       hero_lead:
         "Control EV charging, follow solar production and home use, and manage energy costs. Built around MyEnergi and Growatt today, with room for more devices and inverters with public APIs.",
       cta_store: "Get it on the App Store",
+      cta_play: "Get it on Google Play",
       cta_support: "Contact support",
+      download_title: "Get the app",
+      download_lead: "Scan the QR code with your phone, or tap a store badge.",
+      download_appstore: "Download on the App Store",
+      download_playstore: "Get it on Google Play",
+      download_qr_apple: "QR code for the App Store",
+      download_qr_play: "QR code for Google Play",
       trust_title: "Built around your privacy",
       trust_ads_title: "No advertising",
       trust_ads_text: "Zero ads, zero sponsored content, zero tracking pixels.",
@@ -99,7 +113,14 @@
       hero_lead:
         "Controlla ricarica EV, produzione FV e consumi di casa, e gestisci i costi energia. Oggi parte da MyEnergi e Growatt, ma è pensata per accogliere altri dispositivi e inverter con API pubbliche.",
       cta_store: "Disponibile su App Store",
+      cta_play: "Disponibile su Google Play",
       cta_support: "Contatta il supporto",
+      download_title: "Scarica l’app",
+      download_lead: "Inquadra il QR con il telefono, oppure tocca il badge dello store.",
+      download_appstore: "Scarica su App Store",
+      download_playstore: "Disponibile su Google Play",
+      download_qr_apple: "QR code per App Store",
+      download_qr_play: "QR code per Google Play",
       trust_title: "Pensata per la tua privacy",
       trust_ads_title: "Nessuna pubblicità",
       trust_ads_text: "Zero ads, zero contenuti sponsorizzati, zero pixel di tracking.",
@@ -431,9 +452,17 @@
     });
   }
 
+  function applyStoreLinks() {
+    document.querySelectorAll("[data-store]").forEach((el) => {
+      const url = STORE_LINKS[el.getAttribute("data-store")];
+      if (url) el.setAttribute("href", url);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     const year = document.getElementById("year");
     if (year) year.textContent = String(new Date().getFullYear());
+    applyStoreLinks();
     initLangToggle();
     const lang = getLang();
     applyLang(lang);
