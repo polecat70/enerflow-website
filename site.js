@@ -77,6 +77,24 @@
       desc_external: "Record charge sessions away from home with kWh and cost for each stop.",
       caption_settings: "Settings",
       desc_settings: "Tune data range, battery reserve, tariffs CSV import and iCloud backup.",
+      caption_settings_battery: "Battery & tariffs",
+      desc_settings_battery:
+        "Set home battery reserve, manage the PV inverter link and import utility tariffs from CSV.",
+      caption_settings_backup: "Backup & restore",
+      desc_settings_backup:
+        "Open cloud backup or export a JSON snapshot of energy, tariffs, mileage and charging data.",
+      caption_cloud_backup: "Cloud backup",
+      desc_cloud_backup:
+        "Sync automatically to iCloud Drive and restore everything when you switch devices.",
+      caption_stats_charts: "Charts — energy",
+      desc_stats_charts:
+        "Daily imported and solar generation charts, plus the solar-vs-grid mix for the period.",
+      caption_stats_summary: "Charts — summary",
+      desc_stats_summary:
+        "Home energy totals, EV charging mix and solar share in one glance.",
+      caption_stats_costs: "Charts — costs",
+      desc_stats_costs:
+        "Energy cost, estimated solar savings and €/100 km based on your mileage log.",
       caption_icons: "App icons",
       desc_icons: "Pick a preinstalled icon style that fits your home screen.",
       support_title: "Support",
@@ -164,6 +182,24 @@
       desc_external: "Annota le ricariche fuori casa con kWh e costo per ogni sessione.",
       caption_settings: "Impostazioni",
       desc_settings: "Imposta periodo dati, riserva batteria, import CSV tariffe e backup iCloud.",
+      caption_settings_battery: "Batteria e tariffe",
+      desc_settings_battery:
+        "Imposta la riserva batteria di casa, gestisci l’inverter FV e importa le tariffe da CSV.",
+      caption_settings_backup: "Backup e ripristino",
+      desc_settings_backup:
+        "Apri il backup cloud o esporta uno snapshot JSON di energia, tariffe, km e ricariche.",
+      caption_cloud_backup: "Backup cloud",
+      desc_cloud_backup:
+        "Sincronizza automaticamente su iCloud Drive e ripristina tutto quando cambi dispositivo.",
+      caption_stats_charts: "Grafici — energia",
+      desc_stats_charts:
+        "Grafici giornalieri di import e produzione solare, più il mix solare/rete del periodo.",
+      caption_stats_summary: "Grafici — riepilogo",
+      desc_stats_summary:
+        "Totali energia di casa, mix ricarica EV e quota solare in un colpo d’occhio.",
+      caption_stats_costs: "Grafici — costi",
+      desc_stats_costs:
+        "Costo energia, risparmio solare stimato e €/100 km basati sul chilometraggio.",
       caption_icons: "Icone app",
       desc_icons: "Scegli uno stile di icona preinstallato per la home del telefono.",
       support_title: "Supporto",
@@ -192,9 +228,13 @@
 
   // Tutte le immagini uniche (niente duplicati numerati 01–05).
   // La prima è la scheda principale all’apertura.
+  // File solo in en/ vengono nascosti in IT (onerror rimuove lo slide).
   const SCREENSHOTS = [
     { file: "Dashboard02.png", captionKey: "caption_dashboard", descKey: "desc_dashboard" },
     { file: "Stat01.png", captionKey: "caption_stats", descKey: "desc_stats" },
+    { file: "Stat03.png", captionKey: "caption_stats_charts", descKey: "desc_stats_charts" },
+    { file: "Stat04.png", captionKey: "caption_stats_summary", descKey: "desc_stats_summary" },
+    { file: "Stat05.png", captionKey: "caption_stats_costs", descKey: "desc_stats_costs" },
     { file: "Menu01.png", captionKey: "caption_menu", descKey: "desc_menu" },
     { file: "Inverter01.png", captionKey: "caption_inverter", descKey: "desc_inverter" },
     { file: "SellEnergy01.png", captionKey: "caption_gse", descKey: "desc_gse" },
@@ -204,6 +244,9 @@
     { file: "Inverter02.png", captionKey: "caption_inverter_setup", descKey: "desc_inverter_setup" },
     { file: "Stat02.png", captionKey: "caption_stats_period", descKey: "desc_stats_period" },
     { file: "Settings01.png", captionKey: "caption_settings", descKey: "desc_settings" },
+    { file: "Settings02.png", captionKey: "caption_settings_battery", descKey: "desc_settings_battery" },
+    { file: "Settings03.png", captionKey: "caption_settings_backup", descKey: "desc_settings_backup" },
+    { file: "IcloudBackup.png", captionKey: "caption_cloud_backup", descKey: "desc_cloud_backup" },
     { file: "icon01.png", captionKey: "caption_icons", descKey: "desc_icons" },
   ];
 

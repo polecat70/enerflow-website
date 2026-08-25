@@ -14,9 +14,7 @@ Sito statico in questa cartella:
 - `assets/screenshots/en/` — English (site default)
 - `assets/screenshots/it/` — Italian
 
-For now EN copies IT. When you have English captures, replace only `en/`.
-
-Carousel selection is in `site.js` (`SCREENSHOTS` array).
+Carousel selection is in `site.js` (`SCREENSHOTS` array). Files missing for a language are skipped automatically.
 
 ## Opzione consigliata: GitHub Pages + Cloudflare DNS (tutto gratis)
 
