@@ -22,10 +22,10 @@ def store_links() -> tuple[str, str]:
     block = re.search(r"const STORE_LINKS = \{([\s\S]*?)\};", text)
     if not block:
         raise SystemExit("STORE_LINKS not found in site.js")
-    apple = re.search(r'apple:\s*"(https?://[^"]+)"', block.group(1))
-    play = re.search(r'play:\s*"(https?://[^"]+)"', block.group(1))
+    apple = re.search(r'apple:\s*"([^"]*)"', block.group(1))
+    play = re.search(r'play:\s*"([^"]*)"', block.group(1))
     if not apple or not play:
-        raise SystemExit("apple/play URLs missing in STORE_LINKS")
+        raise SystemExit("apple/play keys missing in STORE_LINKS")
     return apple.group(1), play.group(1)
 
 
@@ -54,11 +54,17 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     apple_url, play_url = store_links()
 
-    (OUT / "qr-app-store.svg").write_bytes(qr_svg(apple_url))
-    print(f"wrote qr-app-store.svg for {apple_url}")
+    if apple_url.startswith("http"):
+        (OUT / "qr-app-store.svg").write_bytes(qr_svg(apple_url))
+        print(f"wrote qr-app-store.svg for {apple_url}")
+    else:
+        print("apple URL empty — skipped App Store QR")
 
-    (OUT / "qr-play-store.svg").write_bytes(qr_svg(play_url))
-    print(f"wrote qr-play-store.svg for {play_url}")
+    if play_url.startswith("http"):
+        (OUT / "qr-play-store.svg").write_bytes(qr_svg(play_url))
+        print(f"wrote qr-play-store.svg for {play_url}")
+    else:
+        print("play URL empty — skipped Play Store QR")
 
     try:
         apple_badge = fetch(APPLE_BADGE)

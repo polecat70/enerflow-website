@@ -6,11 +6,11 @@
   const STORAGE_KEY = "enerflow-lang";
   const DEFAULT_LANG = "en";
 
-  // Replace with the real listing URLs, then regenerate QR codes:
-  // python3 scripts/fetch_store_assets.py
+  // Play stays empty until the Android listing is live.
+  // After changing a URL: python3 scripts/fetch_store_assets.py
   const STORE_LINKS = {
-    apple: "https://apps.apple.com/",
-    play: "https://play.google.com/store/apps/",
+    apple: "https://apps.apple.com/app/id6788673859",
+    play: "",
   };
 
   const I18N = {
@@ -34,6 +34,7 @@
       download_playstore: "Get it on Google Play",
       download_qr_apple: "QR code for the App Store",
       download_qr_play: "QR code for Google Play",
+      download_coming_soon: "Coming soon",
       trust_title: "Built around your privacy",
       trust_ads_title: "No advertising",
       trust_ads_text: "Zero ads, zero sponsored content, zero tracking pixels.",
@@ -139,6 +140,7 @@
       download_playstore: "Disponibile su Google Play",
       download_qr_apple: "QR code per App Store",
       download_qr_play: "QR code per Google Play",
+      download_coming_soon: "Prossimamente",
       trust_title: "Pensata per la tua privacy",
       trust_ads_title: "Nessuna pubblicità",
       trust_ads_text: "Zero ads, zero contenuti sponsorizzati, zero pixel di tracking.",
@@ -498,7 +500,19 @@
   function applyStoreLinks() {
     document.querySelectorAll("[data-store]").forEach((el) => {
       const url = STORE_LINKS[el.getAttribute("data-store")];
-      if (url) el.setAttribute("href", url);
+      const live = Boolean(url);
+      el.classList.toggle("is-unavailable", !live);
+      if (live) {
+        el.setAttribute("href", url);
+        el.setAttribute("target", "_blank");
+        el.setAttribute("rel", "noopener noreferrer");
+        el.removeAttribute("aria-disabled");
+      } else {
+        el.removeAttribute("href");
+        el.removeAttribute("target");
+        el.removeAttribute("rel");
+        el.setAttribute("aria-disabled", "true");
+      }
     });
   }
 

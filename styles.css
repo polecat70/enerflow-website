@@ -647,8 +647,10 @@ a:hover {
 
 .store-badge-link {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  line-height: 0;
+  gap: 0.25rem;
+  text-decoration: none;
 }
 
 .store-badge {
@@ -664,6 +666,61 @@ a:hover {
   height: 58px;
   width: auto;
   margin-block: -8px;
+}
+
+.store-soon {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  line-height: 1.2;
+}
+
+.store-badge-link.is-unavailable,
+.store-card.is-unavailable {
+  pointer-events: none;
+  cursor: default;
+}
+
+.store-badge-link.is-unavailable {
+  opacity: 0.48;
+}
+
+.store-card.is-unavailable {
+  opacity: 0.78;
+  box-shadow: none;
+}
+
+.store-card.is-unavailable:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.store-badge-link .store-soon {
+  display: none;
+}
+
+.store-badge-link.is-unavailable .store-soon {
+  display: block;
+}
+
+.store-card .store-soon {
+  display: none;
+}
+
+.store-card.is-unavailable .store-qr {
+  display: none;
+}
+
+.store-card.is-unavailable .store-soon {
+  display: grid;
+  place-items: center;
+  width: 148px;
+  height: 148px;
+  background: #eef3f0;
+  border-radius: 0.55rem;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.85rem;
 }
 
 .footer-grid {
@@ -785,6 +842,11 @@ a:hover {
   }
 
   .store-qr {
+    width: 118px;
+    height: 118px;
+  }
+
+  .store-card.is-unavailable .store-soon {
     width: 118px;
     height: 118px;
   }

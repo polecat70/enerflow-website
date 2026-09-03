@@ -121,7 +121,11 @@ Se vuoi un indirizzo professionale senza casella a pagamento:
 - [ ] Form inviato di test arriva in inbox
 - [ ] URL privacy e support inseriti in App Store Connect
 
-## Nota sul link App Store
+## Link store
 
-In `index.html` il bottone punta ancora a un placeholder generico App Store.  
-Quando Apple assegna l’URL della scheda EnerFlow, aggiorna l’`href` del bottone.
+- **App Store:** `https://apps.apple.com/app/id6788673859` (già impostato in `STORE_LINKS` in `site.js`)
+- **Google Play:** lascia `play: ""` finché la scheda non è pubblica, poi inserisci l’URL e rigenera i QR:
+
+```bash
+python3 scripts/fetch_store_assets.py
+```
