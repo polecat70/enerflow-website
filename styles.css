@@ -221,6 +221,19 @@ a:hover {
   animation: rise 800ms ease forwards 340ms;
 }
 
+.hero-note {
+  display: inline-block;
+  margin: 1.05rem 0 0;
+  padding: 0.4rem 0.9rem;
+  background: #161b19;
+  color: #dceee6;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  opacity: 0;
+  animation: rise 800ms ease forwards 280ms;
+}
+
 .cta-row {
   display: flex;
   flex-wrap: wrap;
@@ -233,12 +246,28 @@ a:hover {
 
 .hero-visual {
   justify-self: end;
-  width: min(100%, 320px);
-  aspect-ratio: 1;
+  width: min(100%, 268px);
   display: grid;
   place-items: center;
   opacity: 0;
   animation: rise 900ms ease forwards 280ms, float 7s ease-in-out infinite 1s;
+}
+
+.hero-phone {
+  margin: 0;
+  width: 100%;
+  border-radius: 1.85rem;
+  overflow: hidden;
+  background: #121614;
+  box-shadow:
+    0 0 0 9px #1c211f,
+    0 26px 54px rgba(8, 18, 14, 0.34);
+}
+
+.hero-phone img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .hero-logo {
@@ -353,6 +382,51 @@ a:hover {
 .screenshots-section {
   padding-top: 2rem;
   overflow: hidden;
+}
+
+.shots-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+}
+
+.shots-head .section-title {
+  margin-bottom: 0.45rem;
+}
+
+.theme-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.15rem;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.7);
+  flex-shrink: 0;
+}
+
+.theme-btn {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.theme-btn.is-active[data-theme="light"] {
+  background: var(--brand-deep);
+  color: var(--white);
+}
+
+.theme-btn.is-active[data-theme="dark"] {
+  background: #161b19;
+  color: #e8f3ee;
 }
 
 .carousel {
@@ -779,8 +853,8 @@ a:hover {
   }
 
   .feature-list {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.6rem 0;
   }
 
   .feature-list li {
@@ -789,7 +863,7 @@ a:hover {
     padding: 0 1.4rem;
   }
 
-  .feature-list li:first-child {
+  .feature-list li:nth-child(odd) {
     border-left: 0;
     padding-left: 0;
   }
@@ -819,7 +893,7 @@ a:hover {
 
   .hero-visual {
     justify-self: start;
-    width: min(100%, 280px);
+    width: min(72%, 220px);
   }
 
   .carousel {
@@ -853,5 +927,11 @@ a:hover {
 
   .store-card {
     padding: 0.9rem 0.7rem 0.65rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual {
+    animation: rise 900ms ease forwards 280ms;
   }
 }

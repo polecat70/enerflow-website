@@ -37,6 +37,7 @@
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="eyebrow">by econe.it</p>
           <h1>EnerFlow</h1>
+          <p class="hero-note" data-i18n="hero_dark">Dark appearance is now in the app.</p>
           <p class="hero-lead" data-i18n="hero_lead">
             Control your wallbox, follow solar production and home use, manage energy costs.
             Your data stays on your device; optional backup goes to your own iCloud.
@@ -52,8 +53,10 @@
             <a class="btn btn-secondary" href="support.html" data-i18n="cta_support">Contact support</a>
           </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-          <img class="hero-logo" src="assets/logo-enerflow.png" alt="" />
+        <div class="hero-visual">
+          <figure class="hero-phone">
+            <img src="assets/screenshots/dark/Dashboard01.png" width="390" height="844" alt="EnerFlow dashboard in dark appearance" data-i18n-attr="alt:hero_phone_alt" />
+          </figure>
         </div>
       </div>
     </section>
@@ -95,16 +98,28 @@
             <strong data-i18n="feat_privacy_title">Privacy by design</strong>
             <p data-i18n="feat_privacy_text">On-device credentials, no ad tracking, optional backup to your iCloud.</p>
           </li>
+          <li>
+            <strong data-i18n="feat_dark_title">Light and dark</strong>
+            <p data-i18n="feat_dark_text">Keep the familiar light screens, or switch to dark for night checks on solar, battery and charging.</p>
+          </li>
         </ul>
       </div>
     </section>
 
     <section class="section screenshots-section" id="screenshots">
       <div class="wrap">
-        <h2 class="section-title" data-i18n="shots_title">A look inside the app</h2>
-        <p class="section-lead" data-i18n="shots_lead">
-          Swipe or use the arrows. Infinite loop — cards on both sides fade into the distance.
-        </p>
+        <div class="shots-head">
+          <div>
+            <h2 class="section-title" data-i18n="shots_title">A look inside the app</h2>
+            <p class="section-lead" data-i18n="shots_lead">
+              Swipe or use the arrows. Switch Light and Dark to see both appearances.
+            </p>
+          </div>
+          <div class="theme-switch" role="group" aria-label="Appearance" data-i18n-attr="aria-label:shots_theme_label">
+            <button type="button" class="theme-btn" data-theme="light" data-i18n="shots_theme_light">Light</button>
+            <button type="button" class="theme-btn is-active" data-theme="dark" data-i18n="shots_theme_dark">Dark</button>
+          </div>
+        </div>
 
         <div class="carousel" aria-roledescription="carousel">
           <button type="button" class="carousel-nav carousel-nav-prev" id="carousel-prev" aria-label="Previous">‹</button>

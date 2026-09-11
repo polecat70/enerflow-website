@@ -4,7 +4,9 @@
  */
 (function () {
   const STORAGE_KEY = "enerflow-lang";
+  const THEME_KEY = "enerflow-shot-theme";
   const DEFAULT_LANG = "en";
+  const DEFAULT_THEME = "dark";
 
   // Play stays empty until the Android listing is live.
   // After changing a URL: python3 scripts/fetch_store_assets.py
@@ -50,9 +52,17 @@
       feat_solar_text: "Growatt is supported today, and other inverter brands with public APIs can be added in future releases.",
       feat_privacy_title: "Privacy by design",
       feat_privacy_text: "On-device credentials, no ad tracking, optional backup to your iCloud.",
+      feat_dark_title: "Light and dark",
+      feat_dark_text:
+        "Keep the familiar light screens, or switch to dark for night checks on solar, battery and charging.",
+      hero_dark: "Dark appearance is now in the app.",
+      hero_phone_alt: "EnerFlow dashboard in dark appearance",
       shots_title: "A look inside the app",
-      shots_lead: "Infinite carousel — swipe or use the arrows. The active screen stays in front; others fade into the distance on both sides.",
+      shots_lead: "Swipe or use the arrows. Switch Light and Dark to see both appearances.",
       shots_empty: "No screenshots found yet. Add PNGs under assets/screenshots/en/.",
+      shots_theme_label: "Appearance",
+      shots_theme_light: "Light",
+      shots_theme_dark: "Dark",
       footer_privacy: "Privacy policy",
       footer_support: "Support",
       lang_label: "Language",
@@ -72,6 +82,9 @@
       desc_gse: "Log payments from selling surplus solar energy and keep yearly totals tidy.",
       caption_menu: "App menu",
       desc_menu: "Reach history sync, stats, tariffs, mileage, charging and cloud backup in one place.",
+      caption_tariffs: "Electricity tariffs",
+      desc_tariffs:
+        "Keep active rates, standing charges and VAT in one list, and add a period when your contract changes.",
       caption_mileage: "Mileage log",
       desc_mileage: "Save odometer readings and track how many kilometres you drive over time.",
       caption_external: "External charging",
@@ -86,7 +99,7 @@
         "Open cloud backup or export a JSON snapshot of energy, tariffs, mileage and charging data.",
       caption_cloud_backup: "Cloud backup",
       desc_cloud_backup:
-        "Sync automatically to iCloud Drive and restore everything when you switch devices.",
+        "Sync automatically to iCloud or Google Drive and restore everything when you switch devices.",
       caption_stats_charts: "Charts — energy",
       desc_stats_charts:
         "Daily imported and solar generation charts, plus the solar-vs-grid mix for the period.",
@@ -156,9 +169,17 @@
       feat_solar_text: "Growatt è supportato oggi, ma in futuro potranno essere integrati altri inverter con API pubbliche.",
       feat_privacy_title: "Privacy by design",
       feat_privacy_text: "Credenziali sul dispositivo, nessun tracking pubblicitario, backup opzionale su iCloud.",
+      feat_dark_title: "Chiaro e scuro",
+      feat_dark_text:
+        "Tieni le schermate chiare di sempre, oppure passa al tema scuro per i controlli di notte su solare, batteria e ricarica.",
+      hero_dark: "Ora l’app ha anche l’aspetto scuro.",
+      hero_phone_alt: "Dashboard EnerFlow in aspetto scuro",
       shots_title: "Uno sguardo all’app",
-      shots_lead: "Carosello infinito — scorri o usa le frecce. La schermata attiva resta davanti; le altre si allontanano a destra e a sinistra.",
+      shots_lead: "Scorri o usa le frecce. Passa da Chiaro a Scuro per vedere entrambi gli aspetti.",
       shots_empty: "Nessuno screenshot trovato. Aggiungi i PNG in assets/screenshots/it/.",
+      shots_theme_label: "Aspetto",
+      shots_theme_light: "Chiaro",
+      shots_theme_dark: "Scuro",
       footer_privacy: "Informativa privacy",
       footer_support: "Supporto",
       lang_label: "Lingua",
@@ -178,6 +199,9 @@
       desc_gse: "Registra i pagamenti SSP / Ritiro Dedicato e tieni i totali per anno solare GSE.",
       caption_menu: "Menu app",
       desc_menu: "Accedi a sync storico, statistiche, tariffe, km, ricariche e backup cloud.",
+      caption_tariffs: "Tariffe energia",
+      desc_tariffs:
+        "Tieni in un elenco le tariffe attive, il fisso mensile e l’IVA, e aggiungi un periodo quando cambia il contratto.",
       caption_mileage: "Chilometraggio",
       desc_mileage: "Salva le letture del contachilometri e segui i km percorsi nel tempo.",
       caption_external: "Ricariche esterne",
@@ -192,7 +216,7 @@
         "Apri il backup cloud o esporta uno snapshot JSON di energia, tariffe, km e ricariche.",
       caption_cloud_backup: "Backup cloud",
       desc_cloud_backup:
-        "Sincronizza automaticamente su iCloud Drive e ripristina tutto quando cambi dispositivo.",
+        "Sincronizza automaticamente su iCloud o Google Drive e ripristina tutto quando cambi dispositivo.",
       caption_stats_charts: "Grafici — energia",
       desc_stats_charts:
         "Grafici giornalieri di import e produzione solare, più il mix solare/rete del periodo.",
@@ -229,26 +253,28 @@
   };
 
   // Tutte le immagini uniche (niente duplicati numerati 01–05).
-  // La prima è la scheda principale all’apertura.
-  // File solo in en/ vengono nascosti in IT (onerror rimuove lo slide).
+  // La prima disponibile tra Dashboard01/02 è la scheda principale all’apertura.
+  // File assenti nella cartella del tema/lingua vengono nascosti (onerror).
   const SCREENSHOTS = [
-    { file: "Dashboard02.png", captionKey: "caption_dashboard", descKey: "desc_dashboard" },
+    { file: "Dashboard01.png", captionKey: "caption_dashboard", descKey: "desc_dashboard" },
+    { file: "Dashboard02.png", captionKey: "caption_dashboard_alt", descKey: "desc_dashboard_alt" },
+    { file: "Menu01.png", captionKey: "caption_menu", descKey: "desc_menu" },
     { file: "Stat01.png", captionKey: "caption_stats", descKey: "desc_stats" },
     { file: "Stat03.png", captionKey: "caption_stats_charts", descKey: "desc_stats_charts" },
     { file: "Stat04.png", captionKey: "caption_stats_summary", descKey: "desc_stats_summary" },
     { file: "Stat05.png", captionKey: "caption_stats_costs", descKey: "desc_stats_costs" },
-    { file: "Menu01.png", captionKey: "caption_menu", descKey: "desc_menu" },
+    { file: "Stat02.png", captionKey: "caption_stats_period", descKey: "desc_stats_period" },
+    { file: "Tariffs01.png", captionKey: "caption_tariffs", descKey: "desc_tariffs" },
     { file: "Inverter01.png", captionKey: "caption_inverter", descKey: "desc_inverter" },
     { file: "SellEnergy01.png", captionKey: "caption_gse", descKey: "desc_gse" },
     { file: "Km01.png", captionKey: "caption_mileage", descKey: "desc_mileage" },
     { file: "ExternalRecharge.png", captionKey: "caption_external", descKey: "desc_external" },
-    { file: "Dashboard01.png", captionKey: "caption_dashboard_alt", descKey: "desc_dashboard_alt" },
     { file: "Inverter02.png", captionKey: "caption_inverter_setup", descKey: "desc_inverter_setup" },
-    { file: "Stat02.png", captionKey: "caption_stats_period", descKey: "desc_stats_period" },
     { file: "Settings01.png", captionKey: "caption_settings", descKey: "desc_settings" },
     { file: "Settings02.png", captionKey: "caption_settings_battery", descKey: "desc_settings_battery" },
     { file: "Settings03.png", captionKey: "caption_settings_backup", descKey: "desc_settings_backup" },
     { file: "IcloudBackup.png", captionKey: "caption_cloud_backup", descKey: "desc_cloud_backup" },
+    { file: "CloudBackup.png", captionKey: "caption_cloud_backup", descKey: "desc_cloud_backup" },
     { file: "icon01.png", captionKey: "caption_icons", descKey: "desc_icons" },
   ];
 
@@ -258,6 +284,31 @@
     if (offset > half) offset -= n;
     if (offset < -half) offset += n;
     return offset;
+  }
+
+  function getTheme() {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === "light" || saved === "dark") return saved;
+    return DEFAULT_THEME;
+  }
+
+  function setTheme(theme) {
+    localStorage.setItem(THEME_KEY, theme);
+    applyTheme(theme);
+    rebuildCarousel(getLang());
+  }
+
+  function applyTheme(theme) {
+    document.querySelectorAll(".theme-btn").forEach((btn) => {
+      const active = btn.getAttribute("data-theme") === theme;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
+
+  function screenshotFolder(lang, theme) {
+    if (theme === "dark") return "dark";
+    return lang === "it" ? "it" : "en";
   }
 
   function getLang() {
@@ -324,7 +375,7 @@
     stage.innerHTML = "";
     carouselState = { index: 0, items: [] };
 
-    const folder = lang === "it" ? "it" : "en";
+    const folder = screenshotFolder(lang, getTheme());
     let pending = SCREENSHOTS.length;
     let loaded = 0;
 
@@ -384,8 +435,11 @@
         item.el.onclick = () => goTo(i);
       });
 
-      // Scheda principale (Dashboard live) al centro all’apertura
-      const mainIdx = carouselState.items.findIndex((it) => it.original === 0);
+      // Dashboard live al centro all’apertura, se presente
+      const mainIdx = carouselState.items.findIndex((it) => {
+        const file = SCREENSHOTS[it.original]?.file || "";
+        return file === "Dashboard01.png" || file === "Dashboard02.png";
+      });
       carouselState.index = mainIdx >= 0 ? mainIdx : 0;
       renderCarousel();
     }
@@ -497,6 +551,15 @@
     });
   }
 
+  function initAppearanceToggle() {
+    document.querySelectorAll(".theme-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const theme = btn.getAttribute("data-theme");
+        if (theme === "light" || theme === "dark") setTheme(theme);
+      });
+    });
+  }
+
   function applyStoreLinks() {
     document.querySelectorAll("[data-store]").forEach((el) => {
       const url = STORE_LINKS[el.getAttribute("data-store")];
@@ -521,8 +584,10 @@
     if (year) year.textContent = String(new Date().getFullYear());
     applyStoreLinks();
     initLangToggle();
+    initAppearanceToggle();
     const lang = getLang();
     applyLang(lang);
+    applyTheme(getTheme());
     rebuildCarousel(lang);
   });
 })();

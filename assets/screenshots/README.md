@@ -2,32 +2,34 @@
 
 ## Folders
 
-| Folder | Language |
-|--------|----------|
-| `en/` | English (site default) |
-| `it/` | Italian |
+| Folder | Use |
+|--------|-----|
+| `en/` | Light appearance, English UI (site default for Light) |
+| `it/` | Light appearance, Italian UI |
+| `dark/` | Dark appearance (shared for EN/IT) |
 
-EN has additional captures not yet available in IT. Missing files are skipped per language.
+Missing files are skipped automatically.
 
-## Used in the infinite carousel
+## Carousel (`site.js` → `SCREENSHOTS`)
 
-1. `Dashboard02.png` — main card on open
-2. `Stat01.png`
-3. `Stat03.png` — EN only
-4. `Stat04.png` — EN only
-5. `Stat05.png` — EN only
-6. `Menu01.png`
-7. `Inverter01.png`
-8. `SellEnergy01.png`
-9. `Km01.png`
-10. `ExternalRecharge.png`
-11. `Dashboard01.png`
-12. `Inverter02.png`
-13. `Stat02.png`
-14. `Settings01.png`
-15. `Settings02.png` — EN only
-16. `Settings03.png` — EN only
-17. `IcloudBackup.png` — EN only
-18. `icon01.png`
+Opens on `Dashboard01.png` when that file exists.
 
-Numbered duplicates (`01-…` … `05-…`) in the parent folder are excluded to avoid showing the same screen twice.
+### Light (`en/`)
+
+- `Dashboard01.png`
+- `Stat03.png`, `Stat04.png`, `Stat05.png`
+- `Inverter01.png`, `Inverter02.png`
+- `SellEnergy01.png`, `Km01.png`, `ExternalRecharge.png`
+- `Settings01.png`, `Settings02.png`, `Settings03.png`
+- `IcloudBackup.png`, `icon01.png`
+
+### Dark (`dark/`)
+
+- `Dashboard01.png` — live dashboard
+- `Menu01.png` — side menu
+- `Stat03.png` — charts
+- `Tariffs01.png` — electricity tariffs
+- `ExternalRecharge.png`
+- `SellEnergy01.png` — export income
+- `CloudBackup.png` — Google Drive / iCloud backup
+- `Settings01.png`, `Settings03.png`

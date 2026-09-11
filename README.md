@@ -11,10 +11,11 @@ Sito statico in questa cartella:
 
 ## Screenshot (bilingual)
 
-- `assets/screenshots/en/` — English (site default)
-- `assets/screenshots/it/` — Italian
+- `assets/screenshots/en/` — Light, English (site default for Light)
+- `assets/screenshots/it/` — Light, Italian
+- `assets/screenshots/dark/` — Dark appearance (shared)
 
-Carousel selection is in `site.js` (`SCREENSHOTS` array). Files missing for a language are skipped automatically.
+Carousel selection is in `site.js` (`SCREENSHOTS` array). Files missing for a language or theme are skipped automatically. The screenshot section has a Light / Dark switch.
 
 ## Opzione consigliata: GitHub Pages + Cloudflare DNS (tutto gratis)
 
